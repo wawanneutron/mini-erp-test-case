@@ -9,6 +9,8 @@ class Transaction extends Model
 {
     use BelongsToTenant;
 
+    protected $fillable = ['tenant_id', 'user_id', 'total'];
+
     public function items()
     {
         return $this->hasMany(TransactionItem::class);
