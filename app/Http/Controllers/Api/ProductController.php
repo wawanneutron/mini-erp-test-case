@@ -10,7 +10,6 @@ use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
-
     /**
      * Display a listing of the resource.
      */
@@ -48,7 +47,7 @@ class ProductController extends Controller
 
         $product->update($request->validated());
 
-        return $product;
+        return response()->json($product, 201);
     }
 
     /**

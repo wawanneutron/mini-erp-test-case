@@ -37,7 +37,7 @@ class ProductPolicy
      */
     public function update(User $user, Product $product): bool
     {
-        return $user->role->name === 'owner' && $user->tenant_id === $product->tenant_id;
+        return $user->role->name === 'owner';
     }
 
     /**
@@ -45,7 +45,7 @@ class ProductPolicy
      */
     public function delete(User $user, Product $product): bool
     {
-        return $user->role->name === 'owner' && $user->tenant_id === $product->tenant_id;
+        return $user->role->name === 'owner';
     }
 
     /**
