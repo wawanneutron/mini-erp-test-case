@@ -9,14 +9,28 @@ use App\Models\Transaction;
 use App\Models\TransactionItem;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Http\Request;
 
 class TransactionController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        return Transaction::with('items.product')
-            ->latest()
-            ->get();
+        $perPage = $request->input('per_page', 10);
+
+        $transaction = Transaction::with('items.product')->latest()->paginate($perPage);
+
+        return response()->json([
+            'success' => true,
+            'data' => $transaction->items(),
+            'meta' => [
+                'current_page' => $transaction->currentPage(),
+                'last_page' => $transaction->lastPage(),
+                'per_page' => $transaction->perPage(),
+                'total' => $transaction->total(),
+            ],
+        ]);
+
+        return Transaction::with('items.product')->latest()->get();
     }
 
     public function store(StoreTransactionRequest $request)
@@ -24,7 +38,6 @@ class TransactionController extends Controller
         $this->authorize('create', Transaction::class);
 
         return DB::transaction(function () use ($request) {
-
             $total = 0;
 
             $transaction = Transaction::create([
@@ -33,7 +46,6 @@ class TransactionController extends Controller
             ]);
 
             foreach ($request->items as $item) {
-
                 $product = Product::findOrFail($item['product_id']);
 
                 $price = $product->price;
@@ -52,14 +64,17 @@ class TransactionController extends Controller
             }
 
             $transaction->update([
-                'total' => $total
+                'total' => $total,
             ]);
 
-            return response()->json([
-                'success' => true,
-                'message' => 'Transaction created successfully',
-                'data' => $transaction->load('items.product')
-            ], 201);
+            return response()->json(
+                [
+                    'success' => true,
+                    'message' => 'Transaction created successfully',
+                    'data' => $transaction->load('items.product'),
+                ],
+                201,
+            );
         });
     }
 

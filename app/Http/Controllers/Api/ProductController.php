@@ -13,9 +13,22 @@ class ProductController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        return Product::latest()->get();
+        $perPage = $request->input('per_page', 10);
+
+        $products = Product::latest()->paginate($perPage);
+
+        return response()->json([
+            'success' => true,
+            'data' => $products->items(),
+            'meta' => [
+                'current_page' => $products->currentPage(),
+                'last_page' => $products->lastPage(),
+                'per_page' => $products->perPage(),
+                'total' => $products->total(),
+            ],
+        ]);
     }
 
     /**
