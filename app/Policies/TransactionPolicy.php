@@ -29,7 +29,7 @@ class TransactionPolicy
      */
     public function create(User $user): bool
     {
-        return $user->role->name === 'owner';
+        return true;
     }
 
     /**
