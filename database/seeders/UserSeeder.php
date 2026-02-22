@@ -37,17 +37,17 @@ class UserSeeder extends Seeder
         // STAFF
         User::create([
             'name' => 'Staff Maju Terus',
-            'email' => 'staff_majujterus@test.com',
+            'email' => 'staff_abadinanjaya@test.com',
             'password' => Hash::make('password'),
-            'tenant_id' => 3,
+            'tenant_id' => 1,
             'role_id' => $staffRole->id,
         ]);
 
         User::create([
             'name' => 'Staff Sukses Jaya Abadi',
-            'email' => 'staff_suksesjaya@tst.com',
+            'email' => 'staff_majumundur@test.com',
             'password' => Hash::make('password'),
-            'tenant_id' => 4,
+            'tenant_id' => 2,
             'role_id' => $staffRole->id,
         ]);
     }

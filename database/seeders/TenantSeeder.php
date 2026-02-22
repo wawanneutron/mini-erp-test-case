@@ -16,8 +16,6 @@ class TenantSeeder extends Seeder
         Tenant::insert([
             ['name' => 'PT Abadi Nan Jaya'],
             ['name' => 'PT Maju Mundur'],
-            ['name' => 'PT Maju Terus'],
-            ['name' => 'Sukses Jaya Abadi'],
         ]);
     }
 }

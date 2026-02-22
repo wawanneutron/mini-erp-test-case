@@ -79,12 +79,12 @@ struktur database:
 
 ## Akun Login Demo
 
-| Role   | Email                       | Password |
-| ------ | --------------------------- | -------- |
-| Owner1 | owner_abadinanjaya@test.com | password |
-| Owner2 | owner_majumundur@test.com   | password |
-| Staff1 | staff_majujterus@test.com   | password |
-| Staff2 | staff_suksesjaya@tst.com    | password |
+| Tenant_id | Role   | Email                       | Password |
+| --------- | ------ | --------------------------- | -------- |
+| 1         | Owner1 | owner_abadinanjaya@test.com | password |
+| 2         | Owner2 | owner_majumundur@test.com   | password |
+| 1         | Staff1 | staff_abadinanjaya@test.com | password |
+| 2         | Staff2 | staff_majumundur@test.com   | password |
 
 ---
 
