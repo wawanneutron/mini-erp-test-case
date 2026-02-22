@@ -3,6 +3,7 @@
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\ProductController;
 use App\Http\Controllers\Api\ReportController;
+use App\Http\Controllers\Api\StatisitcDashboard;
 use App\Http\Controllers\Api\TransactionController;
 use Illuminate\Support\Facades\Route;
 
@@ -22,4 +23,7 @@ Route::middleware('auth:sanctum')->group(function () {
 
     // Report
     Route::get('/reports', [ReportController::class, 'index']);
+
+    // data statistic dashbaord
+    Route::get('/statistics', [StatisitcDashboard::class, 'index']);
 });
