@@ -20,6 +20,16 @@ class ProductSeeder extends Seeder
             ['name' => 'Keyboard Mechanical', 'price' => 1500000],
             ['name' => 'Mouse Logitech', 'price' => 750000],
             ['name' => 'Monitor LG 27 Inch', 'price' => 4500000],
+            ['name' => 'Headset Gaming Razer', 'price' => 2200000],
+            ['name' => 'SSD Samsung 1TB', 'price' => 1800000],
+            ['name' => 'Harddisk External 2TB', 'price' => 1200000],
+            ['name' => 'RAM DDR5 16GB', 'price' => 1400000],
+            ['name' => 'VGA RTX 4070', 'price' => 9500000],
+            ['name' => 'Webcam Logitech C920', 'price' => 1100000],
+            ['name' => 'Printer Epson L3250', 'price' => 2700000],
+            ['name' => 'Router TP-Link AX55', 'price' => 1600000],
+            ['name' => 'Tablet iPad Air', 'price' => 12000000],
+            ['name' => 'Smartphone Samsung S24', 'price' => 14000000],
         ];
 
         foreach (Tenant::all() as $tenant) {
