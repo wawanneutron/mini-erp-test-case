@@ -40,7 +40,11 @@ class ProductController extends Controller
 
         $product = Product::create($request->validated());
 
-        return response()->json($product, 201);
+        return response()->json([
+            'success' => true,
+            'message' => 'Product created successfully.',
+            'data' => $product,
+        ], 201);
     }
 
     /**
@@ -60,7 +64,11 @@ class ProductController extends Controller
 
         $product->update($request->validated());
 
-        return response()->json($product, 201);
+        return response()->json([
+            'success' => true,
+            'message' => 'Product updated successfully.',
+            'data' => $product,
+        ], 201);
     }
 
     /**
@@ -72,6 +80,9 @@ class ProductController extends Controller
 
         $product->delete();
 
-        return response()->json(['message' => 'Deleted']);
+        return response()->json([
+            'success' => true,
+            'message' => 'Product deleted successfully.',
+        ], 201);
     }
 }

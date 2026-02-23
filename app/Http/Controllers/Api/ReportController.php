@@ -9,7 +9,8 @@ use Illuminate\Http\Request;
 
 class ReportController extends Controller
 {
-    public function index(Request $request) {
+    public function index(Request $request)
+    {
         $startDate = $request->start_date
             ? Carbon::parse($request->start_date)->startOfDay()
             : Carbon::now()->startOfMonth();
@@ -25,12 +26,13 @@ class ReportController extends Controller
 
         return response()->json([
             'success' => true,
+            'message' => 'Generate report successfully.',
             'data' => [
                 'start_date' => $startDate->toDateString(),
                 'end_date' => $endDate->toDateString(),
                 'total_transactions' => $totalTransactions,
                 'total_revenue' => $totalRevenue,
-            ]
+            ],
         ]);
     }
 }

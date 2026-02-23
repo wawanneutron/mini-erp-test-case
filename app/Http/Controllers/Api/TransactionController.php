@@ -7,9 +7,9 @@ use App\Http\Requests\StoreTransactionRequest;
 use App\Models\Product;
 use App\Models\Transaction;
 use App\Models\TransactionItem;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Http\Request;
 
 class TransactionController extends Controller
 {
@@ -29,8 +29,6 @@ class TransactionController extends Controller
                 'total' => $transaction->total(),
             ],
         ]);
-
-        return Transaction::with('items.product')->latest()->get();
     }
 
     public function store(StoreTransactionRequest $request)
@@ -70,7 +68,7 @@ class TransactionController extends Controller
             return response()->json(
                 [
                     'success' => true,
-                    'message' => 'Transaction created successfully',
+                    'message' => 'Transaction created successfully.',
                     'data' => $transaction->load('items.product'),
                 ],
                 201,
